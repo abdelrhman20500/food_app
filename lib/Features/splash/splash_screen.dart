@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/Core/constants/app_images.dart';
+import 'package:food_app/Features/auth/presentation/view/sign_up_view.dart';
 
 
 class SplashView extends StatefulWidget {
@@ -13,9 +15,10 @@ class _SplashScreenState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    // Future.delayed(const Duration(seconds: 3),(){
-    //   Navigator.pushNamed(context, HomeScreen.routeName);
-    // });
+    Future.delayed(const Duration(seconds: 3),(){
+      Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context)=> SignUpView()));
+    });
   }
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class _SplashScreenState extends State<SplashView> {
           height:MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
         ),
-        child: Image.asset("assets/images/splash.png",
+        child: Image.asset(AppImages.splash,
             fit: BoxFit.fill),
       ),
     );
