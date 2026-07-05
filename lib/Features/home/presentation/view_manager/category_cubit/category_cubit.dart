@@ -6,8 +6,8 @@ import 'category_state.dart';
 
 class CategoryCubit extends Cubit<CategoryState>{
   CategoryCubit(this.categoryUseCase): super(CategoryInitial());
-
   final CategoryUseCase categoryUseCase;
+
   Future<void> categoryDate() async {
     emit(CategoryLoading());
     var result = await categoryUseCase.call(const NoParameters());
