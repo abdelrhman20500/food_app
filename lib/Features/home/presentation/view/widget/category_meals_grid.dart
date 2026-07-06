@@ -24,6 +24,7 @@ class CategoryMealsGrid extends StatelessWidget {
             imageUrl:model[index].strMealThumb!,
             title: model[index].strMeal!,
             country: model[index].strCountry!,
+            id: model[index].idMeal!,
           ),
         );
       },
