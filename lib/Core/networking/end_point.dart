@@ -4,4 +4,7 @@ class EndPoint {
   static String categoryMeals({required String category}){
     return "filter.php?c=$category";
   }
+  static String mealsDetails({required String id}){
+    return "lookup.php?i=$id";
+  }
 }
