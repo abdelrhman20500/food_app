@@ -64,10 +64,22 @@ class CategoryMealsCard extends StatelessWidget {
                       maxLines: 1,overflow: TextOverflow.ellipsis,),
                     const SizedBox(height: 6),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Icon(Icons.location_city, size: 16, color: AppColors.primaryColor),
-                        const SizedBox(width: 8.0),
-                        Text(country, style: const TextStyle(fontSize: 14, color: AppColors.primaryColor),),
+                        const Icon(
+                          Icons.location_city,
+                          size: 17,
+                          color: AppColors.primaryColor,
+                        ),
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: Text(
+                            country,
+                            style: const TextStyle(fontSize: 14, color: AppColors.primaryColor, fontWeight: FontWeight.w500,),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ],
                     ),
                   ],

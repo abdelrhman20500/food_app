@@ -19,8 +19,8 @@ class CategoryGridView extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
             (context, index) {
           return CategoryCard(
-            imageUrl: model[index].strCategoryThumb!,
-            title: model[index].strCategory!,
+            imageUrl: model[index].strCategoryThumb ?? '',
+            title: model[index].strCategory ?? '',
           );
         },
         childCount: model.length,
