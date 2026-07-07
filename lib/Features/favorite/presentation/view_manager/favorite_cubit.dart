@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:food_app/Features/home/data/model/meals_details_model.dart';
 import 'favorite_state.dart';
 
@@ -13,7 +14,9 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     emit(FavoriteLoading());
     try {
       final prefs = await SharedPreferences.getInstance();
-      final favoritesJson = prefs.getStringList("favorite_meals_json") ?? [];
+      final userId = Supabase.instance.client.auth.currentUser?.id;
+      final key = "favorite_meals_json_${userId ?? 'guest'}";
+      final favoritesJson = prefs.getStringList(key) ?? [];
       final List<Meals> favorites = favoritesJson.map((item) {
         return Meals.fromJson(jsonDecode(item) as Map<String, dynamic>);
       }).toList();
@@ -26,7 +29,9 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   Future<void> toggleFavorite(Meals meal) async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      final favoritesJson = prefs.getStringList("favorite_meals_json") ?? [];
+      final userId = Supabase.instance.client.auth.currentUser?.id;
+      final key = "favorite_meals_json_${userId ?? 'guest'}";
+      final favoritesJson = prefs.getStringList(key) ?? [];
       
       final List<Meals> favorites = favoritesJson.map((item) {
         return Meals.fromJson(jsonDecode(item) as Map<String, dynamic>);
@@ -41,7 +46,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       }
 
       final updatedJsonList = favorites.map((e) => jsonEncode(e.toJson())).toList();
-      await prefs.setStringList("favorite_meals_json", updatedJsonList);
+      await prefs.setStringList(key, updatedJsonList);
       emit(FavoriteSuccess(favorites));
     } catch (e) {
       emit(FavoriteFailure(e.toString()));

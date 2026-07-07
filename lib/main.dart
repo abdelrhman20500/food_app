@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/Features/favorite/presentation/view_manager/favorite_cubit.dart';
-import 'package:food_app/Features/layout/presentation/view/layout_view.dart';
+import 'Core/Routing/app_route.dart';
+import 'Core/Routing/routes.dart';
 import 'Core/Utilis/simple_bloc_observer.dart';
 import 'Core/networking/supabase_service.dart';
 
@@ -20,10 +21,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  BlocProvider(
       create: (context) => FavoriteCubit(),
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Food App",
-        home: LayoutView(),
+        onGenerateRoute: AppRouter().generateRoute,
+        initialRoute: Routes.splashView,
       ),
     );
   }

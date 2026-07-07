@@ -3,5 +3,4 @@ class Routes{
   static const String signUpView ="SignUpView";
   static const String loginView ="LoginView";
   static const String layoutView ="LayoutView";
-
 }

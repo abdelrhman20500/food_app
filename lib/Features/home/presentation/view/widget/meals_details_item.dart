@@ -57,10 +57,8 @@ class MealsDetailsItem extends StatelessWidget {
                   if (state is FavoriteSuccess) {
                     favorites = state.favorites;
                   }
-
                   final mealId = model.meals![0].idMeal!;
                   final isFav = favorites.any((m) => m.idMeal == mealId);
-
                   return IconButton(
                     icon: CircleAvatar(
                       backgroundColor: Colors.white,
@@ -134,11 +132,7 @@ class MealsDetailsItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   Text(model.meals![0].strInstructions!,
-                  maxLines: 7,overflow: TextOverflow.ellipsis,),
-                  const SizedBox(height: 8),
-                  CustomBottom(text: "Add Favorite", borderRadius: BorderRadius.circular(18.0),
-                    onPressed: (){},
-                  height: 55,width: double.infinity,backgroundColor: AppColors.primaryColor,)
+                  maxLines: 8,overflow: TextOverflow.ellipsis,),
                 ],
               ),
             ),

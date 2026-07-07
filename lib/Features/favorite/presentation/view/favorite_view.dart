@@ -25,11 +25,7 @@ class FavoriteView extends StatelessWidget {
         Expanded(
           child: BlocBuilder<FavoriteCubit, FavoriteState>(
             builder: (context, state) {
-              if (state is FavoriteLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(color: AppColors.primaryColor),
-                );
-              } else if (state is FavoriteFailure) {
+             if (state is FavoriteFailure) {
                 return Center(
                   child: Text(
                     "Error: ${state.error}",
@@ -68,7 +64,9 @@ class FavoriteView extends StatelessWidget {
                   },
                 );
               }
-              return const SizedBox.shrink();
+             return const Center(
+               child: CircularProgressIndicator(color: AppColors.primaryColor),
+             );
             },
           ),
         ),
