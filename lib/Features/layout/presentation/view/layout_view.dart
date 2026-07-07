@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/Features/favorite/presentation/view/favorite_view.dart';
+import 'package:food_app/Features/favorite/presentation/view_manager/favorite_cubit.dart';
 import '../../../../Core/constants/app_color.dart';
 import '../../../home/presentation/view/home_view.dart';
 import '../../../profile/presentation/view/profile_view.dart';
@@ -21,6 +22,12 @@ class _LayoutScreenState extends State<LayoutView> {
     const FavoriteView(),
     const ProfileView(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<FavoriteCubit>().getFavorites();
+  }
 
   @override
   Widget build(BuildContext context) {

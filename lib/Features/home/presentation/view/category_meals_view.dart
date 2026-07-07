@@ -22,7 +22,7 @@ class CategoryMealsView extends StatelessWidget {
         {
           Navigator.pop(context);
         }, icon: const Icon(Icons.arrow_back),color: AppColors.primaryColor,),
-        title: const Text("Chicken Recipes", style: AppTheme.textStyle20,),
+        title: Text("$category Recipes", style: AppTheme.textStyle20,),
         centerTitle: true,
       ),
       body: BlocProvider(
